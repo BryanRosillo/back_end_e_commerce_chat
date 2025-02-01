@@ -15,6 +15,7 @@ spec:
       containers:
       - name: microservicio-chat
         image: bryanlrx/ec-chat:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8084
         env:
