@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservicio-chat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microservicio-chat
+  template:
+    metadata:
+      labels:
+        app: microservicio-chat
+    spec:
+      containers:
+      - name: microservicio-chat
+        image: bryanlrx/ec-chat:latest
+        ports:
+        - containerPort: 8084
+        env:
+        - name: MICROSERVICIO_REGISTRO_URI
+          value: 'http://microservicio-registro:8761/eureka/'
